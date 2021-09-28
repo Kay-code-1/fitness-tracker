@@ -3,6 +3,7 @@ const db = require('../models');
 
 // Use 'db.Workout' to refernce the model and use the methods provided with the model to execute database operatioms
 
+//create new workout
 router.post('/api/workouts', (req, res) => {
 
   db.Workout.create(req.body)
@@ -15,6 +16,7 @@ router.post('/api/workouts', (req, res) => {
     });
 });
 
+//edit workout
 router.put('/api/workouts/:id', ({ body, params }, res) => {
 
   db.Workout.findByIdAndUpdate(
@@ -32,8 +34,8 @@ router.put('/api/workouts/:id', ({ body, params }, res) => {
 
 });
 
+//get total duration of workouts
 router.get('/api/workouts', (req, res) => {
-
   db.Workout.aggregate([
     {
       $addFields: {
